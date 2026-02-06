@@ -11,6 +11,8 @@ OUTPUT:
 =============================================================================
 """
 
+import os
+
 import matplotlib.pyplot as plt
 import pandas as pd
 
@@ -42,5 +44,6 @@ def plt_graph(episodes, scores, avg_scores, goals, env_name, model_name, exp_nam
              linestyle='dashed', label='Solved Requirement')
     plt.legend()
     plt.ylim(70, 110)  # Y-axis range for MountainCar score scale
+    os.makedirs(save_path, exist_ok=True)  # Create directory if it doesn't exist
     plt.savefig(save_path + '/' + '{}_{}_{}.png'.format(env_name, model_name, exp_name))
     plt.close()
